@@ -33,4 +33,13 @@ class DataService {
     var JOKE_REF: Firebase {
         return _JOKE_REF
     }
+    
+    func createNewAccount(uid: String, user: Dictionary<String, String>) {
+        USER_REF.childByAppendingPath(uid).setValue(user)
+    }
+    
+    func createNewJoke(joke: Dictionary<String, AnyObject>) {
+        let firebaseNewJoke = JOKE_REF.childByAutoId()
+        firebaseNewJoke.setValue(joke)
+    }
 }
